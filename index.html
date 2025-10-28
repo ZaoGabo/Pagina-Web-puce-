@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-commerce - Tu tienda online">
+    <title>E-commerce | Inicio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <a href="index.html" class="logo">ZaoShop</a>
+                </div>
+                <ul class="navbar-menu">
+                    <li><a href="#" class="nav-link">Inicio</a></li>
+                    <li><a href="#" class="nav-link">Productos</a></li>
+                    <li><a href="#" class="nav-link">Categorías</a></li>
+                    <li><a href="#" class="nav-link">Ofertas</a></li>
+                    <li><a href="#" class="nav-link">Contacto</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <button class="btn-icon" id="search-btn" aria-label="Buscar">
+                        <span class="icon">🔍</span>
+                    </button>
+                    <button class="btn-icon" id="cart-btn" aria-label="Carrito">
+                        <span class="icon">🛒</span>
+                        <span class="badge">0</span>
+                    </button>
+                    <button class="btn-icon" id="user-btn" aria-label="Usuario">
+                        <span class="icon">👤</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Bienvenido a nuestra tienda</h1>
+                <p class="hero-subtitle">Descubre los mejores productos al mejor precio</p>
+                <button class="btn btn-primary">Ver productos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Categorías</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h3 class="category-name">Electrónica</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">👕</div>
+                    <h3 class="category-name">Ropa</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🏠</div>
+                    <h3 class="category-name">Hogar</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📚</div>
+                    <h3 class="category-name">Libros</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="products-grid" id="products-container">
+                <!-- Los productos se cargarán aquí dinámicamente -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300" alt="Producto 1">
+                        <button class="btn-wishlist" aria-label="Agregar a favoritos">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Producto 1</h3>
+                        <p class="product-description">Descripción breve del producto</p>
+                        <div class="product-footer">
+                            <span class="product-price">$99.99</span>
+                            <button class="btn btn-secondary">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Más productos... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Suscríbete a nuestro Newsletter</h2>
+                <p class="newsletter-text">Recibe ofertas exclusivas y novedades</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input 
+                        type="email" 
+                        class="input-email" 
+                        placeholder="Tu correo electrónico"
+                        required
+                    >
+                    <button type="submit" class="btn btn-primary">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-title">ZaoShop</h3>
+                    <p class="footer-text">Tu tienda online de confianza</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Información</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre nosotros</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Ayuda</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Envíos</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Contacto</h4>
+                    <ul class="footer-links">
+                        <li>Email: ZaoShop@outlook.com</li>
+                        <li>Tel: +593 9999999999</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZaoShop. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
