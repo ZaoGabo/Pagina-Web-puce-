@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,24 +78,31 @@
     <section class="products">
         <div class="container">
             <h2 class="section-title">Productos Destacados</h2>
-            <div class="products-grid" id="products-container">
-                <!-- Los productos se cargarán aquí dinámicamente -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://via.placeholder.com/300" alt="Producto 1">
-                        <button class="btn-wishlist" aria-label="Agregar a favoritos">♡</button>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Producto 1</h3>
-                        <p class="product-description">Descripción breve del producto</p>
-                        <div class="product-footer">
-                            <span class="product-price">$99.99</span>
-                            <button class="btn btn-secondary">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Más productos... -->
+            <div class="product-toolbar" role="toolbar" aria-label="Preferencias de visualización">
+                <label for="theme">Tema
+                    <select id="theme" name="theme">
+                        <option value="light">Claro</option>
+                        <option value="dark">Oscuro</option>
+                    </select>
+                </label>
+                <label for="fontSize">Tamaño letra
+                    <select id="fontSize" name="fontSize">
+                        <option value="100%">100%</option>
+                        <option value="112.5%">112%</option>
+                        <option value="125%">125%</option>
+                    </select>
+                </label>
+                <label for="category">Categoría
+                    <select id="category" name="category">
+                        <option>Todas</option>
+                    </select>
+                </label>
+                <button type="button" class="btn btn-secondary" id="btnCart" aria-haspopup="dialog" aria-controls="cartDialog">
+                    🛒 <span id="cartCount">0</span>
+                </button>
             </div>
+            <div id="status" class="product-status" aria-live="polite"></div>
+            <section id="grid" class="products-grid" aria-busy="false"></section>
         </div>
     </section>
 
@@ -156,7 +163,48 @@
         </div>
     </footer>
 
+    <!-- Modal Detalle de producto -->
+    <dialog id="detailDialog" aria-labelledby="dlgTitle">
+        <article>
+            <header>
+                <h2 id="dlgTitle"></h2>
+                <button id="dlgClose" class="modal-close" aria-label="Cerrar">✕</button>
+            </header>
+            <div class="carousel" aria-roledescription="carrusel">
+                <img id="imgMain" alt="Imagen del producto">
+                <div class="thumbs" role="group" aria-label="Miniaturas">
+                    <button class="thumb" data-idx="0">1</button>
+                    <button class="thumb" data-idx="1">2</button>
+                    <button class="thumb" data-idx="2">3</button>
+                </div>
+            </div>
+            <p id="dlgDesc"></p>
+            <p><strong>Precio:</strong> <span id="dlgPrice"></span></p>
+            <p><strong>Stock:</strong> <span id="dlgStock"></span></p>
+            <footer>
+                <button id="buyBtn" class="btn btn-primary">Agregar al carrito</button>
+            </footer>
+        </article>
+    </dialog>
+
+    <!-- Modal Carrito -->
+    <dialog id="cartDialog" aria-labelledby="cartTitle">
+        <article>
+            <header>
+                <h2 id="cartTitle">Carrito</h2>
+                <button id="cartClose" class="modal-close" aria-label="Cerrar">✕</button>
+            </header>
+            <ul id="cartList"></ul>
+            <p><strong>Total:</strong> <span id="cartTotal">$0.00</span></p>
+            <footer>
+                <button id="clearCart" class="btn btn-outline">Vaciar</button>
+                <button id="checkout" class="btn btn-primary">Pagar</button>
+            </footer>
+        </article>
+    </dialog>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
