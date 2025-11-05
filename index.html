@@ -3,158 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="E-commerce - Tu tienda online">
-    <title>E-commerce | Inicio</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="E-commerce - Tu tienda online accesible y adaptable">
+    <title>ZaoShop | Carrito accesible</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- Header / Navigation -->
-    <header class="header">
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <header class="header" role="banner">
         <div class="container">
-            <nav class="navbar">
+            <nav class="navbar" aria-label="Navegación principal">
                 <div class="navbar-brand">
-                    <a href="index.html" class="logo">ZaoShop</a>
+                    <a href="#hero" class="logo">ZaoShop</a>
                 </div>
-                <ul class="navbar-menu">
-                    <li><a href="#" class="nav-link">Inicio</a></li>
-                    <li><a href="#" class="nav-link">Productos</a></li>
-                    <li><a href="#" class="nav-link">Categorías</a></li>
-                    <li><a href="#" class="nav-link">Ofertas</a></li>
-                    <li><a href="#" class="nav-link">Contacto</a></li>
+                <button type="button" class="navbar-toggle" id="menuToggle" aria-expanded="false" aria-controls="primary-menu">
+                    <span class="sr-only">Abrir menú</span>
+                    <span aria-hidden="true">&#9776;</span>
+                </button>
+                <ul class="navbar-menu" id="primary-menu">
+                    <li><a href="#hero" class="nav-link" aria-current="page">Inicio</a></li>
+                    <li><a href="#categories" class="nav-link">Categorías</a></li>
+                    <li><a href="#products" class="nav-link">Productos</a></li>
+                    <li><a href="#contact" class="nav-link">Contacto</a></li>
+                    <li><a href="#newsletter" class="nav-link">Newsletter</a></li>
                 </ul>
                 <div class="navbar-actions">
-                    <button class="btn-icon" id="search-btn" aria-label="Buscar">
-                        <span class="icon">🔍</span>
+                    <button class="btn-icon" id="search-btn" aria-label="Buscar productos">
+                        <span class="icon" aria-hidden="true">🔍</span>
                     </button>
-                    <button class="btn-icon" id="cart-btn" aria-label="Carrito">
-                        <span class="icon">🛒</span>
+                    <button class="btn-icon" id="cart-btn" aria-label="Abrir carrito" aria-expanded="false" aria-controls="cartDialog">
+                        <span class="icon" aria-hidden="true">🛒</span>
                         <span class="badge">0</span>
                     </button>
-                    <button class="btn-icon" id="user-btn" aria-label="Usuario">
-                        <span class="icon">👤</span>
+                    <button class="btn-icon" id="user-btn" aria-label="Opciones de usuario">
+                        <span class="icon" aria-hidden="true">👤</span>
                     </button>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Bienvenido a nuestra tienda</h1>
-                <p class="hero-subtitle">Descubre los mejores productos al mejor precio</p>
-                <button class="btn btn-primary">Ver productos</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="categories">
-        <div class="container">
-            <h2 class="section-title">Categorías</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-icon">📱</div>
-                    <h3 class="category-name">Electrónica</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">👕</div>
-                    <h3 class="category-name">Ropa</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">🏠</div>
-                    <h3 class="category-name">Hogar</h3>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">📚</div>
-                    <h3 class="category-name">Libros</h3>
+    <main id="main-content" tabindex="-1">
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title" id="hero-title">Bienvenido a ZaoShop</h1>
+                    <p class="hero-subtitle">Carrito de compras accesible, persistente y adaptable para todos los dispositivos.</p>
+                    <a class="btn btn-primary" href="#products">Explorar productos</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Featured Products Section -->
-    <section class="products">
-        <div class="container">
-            <h2 class="section-title">Productos Destacados</h2>
-            <div class="product-toolbar" role="toolbar" aria-label="Preferencias de visualización">
-                <label for="theme">Tema
-                    <select id="theme" name="theme">
-                        <option value="light">Claro</option>
-                        <option value="dark">Oscuro</option>
-                    </select>
-                </label>
-                <label for="fontSize">Tamaño letra
-                    <select id="fontSize" name="fontSize">
-                        <option value="100%">100%</option>
-                        <option value="112.5%">112%</option>
-                        <option value="125%">125%</option>
-                    </select>
-                </label>
-                <label for="category">Categoría
-                    <select id="category" name="category">
-                        <option>Todas</option>
-                    </select>
-                </label>
-                <button type="button" class="btn btn-secondary" id="btnCart" aria-haspopup="dialog" aria-controls="cartDialog">
-                    🛒 <span id="cartCount">0</span>
-                </button>
+        <section class="categories" id="categories" aria-labelledby="categories-title">
+            <div class="container">
+                <h2 class="section-title" id="categories-title">Categorías destacadas</h2>
+                <div class="categories-grid" role="list">
+                    <article class="category-card" role="listitem">
+                        <div class="category-icon" aria-hidden="true">📱</div>
+                        <h3 class="category-name">Electrónica</h3>
+                        <p class="category-text">Smartphones, laptops y gadgets inteligentes.</p>
+                    </article>
+                    <article class="category-card" role="listitem">
+                        <div class="category-icon" aria-hidden="true">👕</div>
+                        <h3 class="category-name">Ropa</h3>
+                        <p class="category-text">Moda para todas las temporadas.</p>
+                    </article>
+                    <article class="category-card" role="listitem">
+                        <div class="category-icon" aria-hidden="true">🏠</div>
+                        <h3 class="category-name">Hogar</h3>
+                        <p class="category-text">Accesorios inteligentes para tu casa.</p>
+                    </article>
+                    <article class="category-card" role="listitem">
+                        <div class="category-icon" aria-hidden="true">📚</div>
+                        <h3 class="category-name">Libros</h3>
+                        <p class="category-text">Lecturas recomendadas para crecer.</p>
+                    </article>
+                </div>
             </div>
-            <div id="status" class="product-status" aria-live="polite"></div>
-            <section id="grid" class="products-grid" aria-busy="false"></section>
-        </div>
-    </section>
+        </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <div class="newsletter-content">
-                <h2 class="newsletter-title">Suscríbete a nuestro Newsletter</h2>
-                <p class="newsletter-text">Recibe ofertas exclusivas y novedades</p>
-                <form class="newsletter-form" id="newsletter-form">
-                    <input 
-                        type="email" 
-                        class="input-email" 
-                        placeholder="Tu correo electrónico"
-                        required
-                    >
-                    <button type="submit" class="btn btn-primary">Suscribirse</button>
-                </form>
+        <section class="products" id="products" aria-labelledby="products-title">
+            <div class="container">
+                <div class="products-heading">
+                    <h2 class="section-title" id="products-title">Catálogo de productos</h2>
+                    <p class="product-updated">Última actualización: <time id="catalogUpdated" datetime="">sin datos</time></p>
+                </div>
+                <div class="product-toolbar" role="toolbar" aria-label="Preferencias de visualización">
+                    <label for="theme">Tema
+                        <select id="theme" name="theme">
+                            <option value="light">Claro</option>
+                            <option value="dark">Oscuro</option>
+                        </select>
+                    </label>
+                    <label for="fontSize">Tamaño letra
+                        <select id="fontSize" name="fontSize">
+                            <option value="100%">100%</option>
+                            <option value="112.5%">112%</option>
+                            <option value="125%">125%</option>
+                        </select>
+                    </label>
+                    <label for="category">Categoría
+                        <select id="category" name="category">
+                            <option value="Todas">Todas</option>
+                        </select>
+                    </label>
+                    <button type="button" class="btn btn-secondary" id="btnCart" aria-haspopup="dialog" aria-controls="cartDialog" aria-expanded="false">
+                        🛒 <span id="cartCount">0</span>
+                    </button>
+                </div>
+                <div id="status" class="product-status" aria-live="polite"></div>
+                <section id="grid" class="products-grid" aria-busy="false" role="list"></section>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="contact-layout">
+                    <div class="contact-intro">
+                        <h2 class="section-title" id="contact-title">Contáctanos</h2>
+                        <p class="contact-text">¿Tienes dudas? Completa el formulario y te responderemos en menos de 24 horas. Toda la mensajería está validada con expresiones regulares y mensajes accesibles.</p>
+                        <ul class="contact-details">
+                            <li><strong>Email:</strong> <a href="mailto:ZaoShop@outlook.com">ZaoShop@outlook.com</a></li>
+                            <li><strong>Teléfono:</strong> <a href="tel:+593999999999">+593 999 999 999</a></li>
+                        </ul>
+                    </div>
+                    <form class="contact-form" id="contact-form" novalidate aria-describedby="contactStatus">
+                        <div class="form-field">
+                            <label for="contactName">Nombre completo</label>
+                            <input type="text" id="contactName" name="name" autocomplete="name" required aria-invalid="false" aria-describedby="contactNameHelp contactNameError">
+                            <p class="form-help" id="contactNameHelp">Solo letras, espacios y mínimo 2 palabras.</p>
+                            <p class="form-error" id="contactNameError" role="alert" hidden></p>
+                        </div>
+                        <div class="form-field">
+                            <label for="contactEmail">Correo electrónico</label>
+                            <input type="email" id="contactEmail" name="email" autocomplete="email" required aria-invalid="false" aria-describedby="contactEmailHelp contactEmailError">
+                            <p class="form-help" id="contactEmailHelp">Ejemplo: nombre@dominio.com</p>
+                            <p class="form-error" id="contactEmailError" role="alert" hidden></p>
+                        </div>
+                        <div class="form-field">
+                            <label for="contactPhone">Teléfono</label>
+                            <input type="tel" id="contactPhone" name="phone" autocomplete="tel" required aria-invalid="false" aria-describedby="contactPhoneHelp contactPhoneError">
+                            <p class="form-help" id="contactPhoneHelp">Formato Ecuador: +593999000000 o 0999000000</p>
+                            <p class="form-error" id="contactPhoneError" role="alert" hidden></p>
+                        </div>
+                        <div class="form-field">
+                            <label for="contactMessage">Mensaje</label>
+                            <textarea id="contactMessage" name="message" rows="4" required aria-invalid="false" aria-describedby="contactMessageHelp contactMessageError"></textarea>
+                            <p class="form-help" id="contactMessageHelp">Escribe al menos 20 caracteres.</p>
+                            <p class="form-error" id="contactMessageError" role="alert" hidden></p>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                        </div>
+                        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2 class="newsletter-title" id="newsletter-title">Suscríbete a nuestro newsletter</h2>
+                    <p class="newsletter-text">Recibe ofertas exclusivas, recordatorios de stock y lanzamientos mensuales.</p>
+                    <form class="newsletter-form" id="newsletter-form" novalidate>
+                        <label class="sr-only" for="newsletterEmail">Correo electrónico</label>
+                        <input 
+                            type="email"
+                            class="input-email"
+                            id="newsletterEmail"
+                            name="newsletterEmail"
+                            placeholder="Tu correo electrónico"
+                            required
+                            aria-invalid="false"
+                            aria-describedby="newsletterHelp newsletterError"
+                        >
+                        <button type="submit" class="btn btn-primary">Suscribirse</button>
+                    </form>
+                    <p class="form-help" id="newsletterHelp">Usaremos tu correo para enviarte promociones. Puedes cancelar cuando quieras.</p>
+                    <p class="form-error" id="newsletterError" role="alert" hidden></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
                     <h3 class="footer-title">ZaoShop</h3>
-                    <p class="footer-text">Tu tienda online de confianza</p>
+                    <p class="footer-text">Tu tienda online de confianza con accesibilidad y persistencia mejoradas.</p>
+                    <p class="footer-meta">Última visita: <time id="lastVisit" datetime="">Primera vez</time></p>
                 </div>
                 <div class="footer-section">
                     <h4 class="footer-heading">Información</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Sobre nosotros</a></li>
-                        <li><a href="#">Términos y condiciones</a></li>
-                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#contact">Soporte personalizado</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="#products">Catálogo completo</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4 class="footer-heading">Ayuda</h4>
+                    <h4 class="footer-heading">Accesibilidad</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Preguntas frecuentes</a></li>
-                        <li><a href="#">Envíos</a></li>
-                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#main-content">Ir al contenido</a></li>
+                        <li><a href="#products">Navegación por teclado</a></li>
+                        <li><a href="#contact">Mensajes accesibles</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4 class="footer-heading">Contacto</h4>
-                    <ul class="footer-links">
-                        <li>Email: ZaoShop@outlook.com</li>
-                        <li>Tel: +593 9999999999</li>
-                    </ul>
+                    <address class="footer-address">
+                        <a href="mailto:ZaoShop@outlook.com">ZaoShop@outlook.com</a><br>
+                        <a href="tel:+593999999999">+593 999 999 999</a>
+                    </address>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -163,39 +225,38 @@
         </div>
     </footer>
 
-    <!-- Modal Detalle de producto -->
-    <dialog id="detailDialog" aria-labelledby="dlgTitle">
+    <dialog id="detailDialog" aria-labelledby="dlgTitle" aria-modal="true" role="dialog">
         <article>
             <header>
                 <h2 id="dlgTitle"></h2>
-                <button id="dlgClose" class="modal-close" aria-label="Cerrar">✕</button>
+                <button id="dlgClose" class="modal-close" aria-label="Cerrar detalle">✕</button>
             </header>
             <div class="carousel" aria-roledescription="carrusel">
                 <img id="imgMain" alt="Imagen del producto">
-                <div class="thumbs" role="group" aria-label="Miniaturas">
-                    <button class="thumb" data-idx="0">1</button>
-                    <button class="thumb" data-idx="1">2</button>
-                    <button class="thumb" data-idx="2">3</button>
-                </div>
+                <div class="thumbs" id="detailThumbs" role="group" aria-label="Miniaturas"></div>
             </div>
             <p id="dlgDesc"></p>
             <p><strong>Precio:</strong> <span id="dlgPrice"></span></p>
-            <p><strong>Stock:</strong> <span id="dlgStock"></span></p>
+            <p><strong>Stock disponible:</strong> <span id="dlgStock"></span></p>
             <footer>
                 <button id="buyBtn" class="btn btn-primary">Agregar al carrito</button>
             </footer>
         </article>
     </dialog>
 
-    <!-- Modal Carrito -->
-    <dialog id="cartDialog" aria-labelledby="cartTitle">
+    <dialog id="cartDialog" aria-labelledby="cartTitle" aria-modal="true" role="dialog">
         <article>
             <header>
                 <h2 id="cartTitle">Carrito</h2>
-                <button id="cartClose" class="modal-close" aria-label="Cerrar">✕</button>
+                <button id="cartClose" class="modal-close" aria-label="Cerrar carrito">✕</button>
             </header>
-            <ul id="cartList"></ul>
-            <p><strong>Total:</strong> <span id="cartTotal">$0.00</span></p>
+            <div class="cart-body">
+                <ul id="cartList" class="cart-list" role="list"></ul>
+                <div class="cart-summary">
+                    <p><strong>Total:</strong> <span id="cartTotal">$0.00</span></p>
+                    <p><strong>Actualizado:</strong> <time id="cartUpdated" datetime="">sin datos</time></p>
+                </div>
+            </div>
             <footer>
                 <button id="clearCart" class="btn btn-outline">Vaciar</button>
                 <button id="checkout" class="btn btn-primary">Pagar</button>
@@ -203,7 +264,6 @@
         </article>
     </dialog>
 
-    <!-- Scripts -->
     <script src="js/main.js"></script>
     <script type="module" src="js/app.js"></script>
 </body>

@@ -1,96 +1,84 @@
-# 🛒 E-Shop - Tu Tienda Online
+# 🛒 ZaoShop - Carrito accesible y persistente
 
-Bienvenido a **E-Shop**, una plataforma de e-commerce moderna y elegante donde puedes encontrar los mejores productos al mejor precio. Nuestra tienda está diseñada para ofrecer una experiencia de compra fluida, rápida y agradable.
+Sitio web responsive que demuestra los fundamentos de un frontend moderno con carrito de compras funcional, datos dinámicos, accesibilidad ARIA y persistencia con las principales APIs del navegador.
 
-## ✨ Características Principales
+## ✅ Requerimientos cubiertos
 
-### 🏪 Experiencia de Compra Completa
-- **Catálogo de Productos** - Explora nuestra amplia selección de productos organizados por categorías
-- **Carrito de Compras** - Agrega productos y gestiona tu compra fácilmente
-- **Lista de Deseos** - Guarda tus productos favoritos para comprarlos más tarde
-- **Búsqueda Inteligente** - Encuentra exactamente lo que necesitas
-- **Newsletter** - Suscríbete para recibir ofertas exclusivas y novedades
+- **HTML5 semántico:** cabecera, navegación principal, contenido en `main`, formularios etiquetados y diálogos nativos.
+- **CSS3 adaptable:** diseño mobile-first con Grid/Flex, tres puntos de quiebre y controles de foco visibles.
+- **Componentes accesibles:** tarjetas reutilizables, modales (`<dialog>`), carrito operable por teclado y atributos ARIA.
+- **Validaciones con regex:** formulario de contacto y newsletter con mensajes `aria-invalid`/`aria-describedby`.
+- **Datos estáticos:** catálogo cargado desde `data/products.json` con fallback a IndexedDB.
+- **Carrito completo:** añadir, incrementar/decrementar, eliminar, totales en tiempo real y control de stock restante.
+- **Persistencia 4×:** `localStorage`, `sessionStorage`, `IndexedDB` y cookies (`lastVisit`).
+- **Accesibilidad integral (POUR):** skip link, navegación por teclado, contrastes, mensajes en `role="status"` y soporte dark mode.
+- **Modularidad JS:** `app.js` (vista/control), `storage.js` (persistencia), `db.js` (IndexedDB) y `cart.js` (estado del carrito).
 
-### 📱 Categorías Disponibles
-- 📱 **Electrónica** - Smartphones, laptops, auriculares y más
-- 👕 **Ropa y Moda** - Las últimas tendencias en moda
-- 🏠 **Hogar** - Todo para tu hogar inteligente
-- 📚 **Libros** - Lectura para todos los gustos
+## �️ Estructura del proyecto
 
-### 🎨 Diseño y Usabilidad
-- **Responsive Design** - Funciona perfectamente en móviles, tablets y escritorio
-- **Interfaz Intuitiva** - Navegación simple y clara
-- **Carga Rápida** - Optimizado para rendimiento
-- **Diseño Moderno** - Estética limpia y profesional
+```
+index.html
+assets/
+  css/styles.css
+data/
+  products.json
+js/
+  app.js        # lógica de catálogo, carrito y temas
+  cart.js       # gestor de estado del carrito con persistencia
+  db.js         # capa IndexedDB (offline)
+  main.js       # utilidades de UI, validaciones y menú responsive
+```
 
-## 🚀 Tecnologías
+## 🧠 Funcionalidades clave
 
-Construido con tecnologías web modernas:
-- **HTML5** - Estructura semántica y accesible
-- **CSS3** - Diseño con variables CSS y animaciones fluidas
-- **JavaScript ES6+** - Interactividad y funcionalidad dinámica
+- **Catálogo dinámico:** renderiza tarjetas accesibles, filtra por categoría y sincroniza fechas de actualización (`time#catalogUpdated`).
+- **Detalle de producto:** modal con carrusel de miniaturas, botón de compra y control de stock restante.
+- **Carrito persistente:** badge sincronizado, diálogo accesible, resumen con última actualización (`time#cartUpdated`) y guardado automático.
+- **Formulario de contacto:** validaciones con expresiones regulares (nombre, correo, teléfono ECU, mensaje ≥ 20) y mensajes accesibles.
+- **Newsletter:** validación de correo con regex y feedback en `aria-live`.
+- **Preferencias del usuario:** tema claro/oscuro, tamaño de fuente y última categoría recordados en Web Storage.
+- **Última visita:** cookie `lastVisit` + `sessionStorage` para mostrar la visita previa en el footer.
 
-## 🎯 Próximas Características
+## 🧩 Tecnologías
 
-Estamos constantemente mejorando. Próximamente:
-- 🔐 Sistema de autenticación de usuarios
-- 💳 Integración con pasarelas de pago
-- 📦 Seguimiento de pedidos en tiempo real
-- ⭐ Sistema de reseñas y valoraciones
-- 🎁 Programa de puntos y recompensas
-- 🌐 Migración a React y TypeScript para mejor rendimiento
+- **HTML5** semántico con atributos ARIA.
+- **CSS3** moderno (flexbox, grid, variables y dark mode).
+- **JavaScript ES6+** con módulos nativos y `Intl.NumberFormat`.
+- **APIs Web Storage:** `localStorage`, `sessionStorage`, `IndexedDB` y cookies.
 
-## � Cómo Usar la Tienda
+## 🚀 Cómo ejecutar
 
-### Opción 1: Abrir Directamente
-1. Descarga o clona este repositorio
-2. Abre el archivo `index.html` en tu navegador favorito
-3. ¡Empieza a explorar los productos!
-
-### Opción 2: Con Servidor Local
-Para una mejor experiencia de desarrollo:
+1. Clona o descarga el repositorio.
+2. Abre `index.html` directamente en tu navegador **o** lanza un servidor local:
 
 ```powershell
-# Usando Python
+# Python
 python -m http.server 8000
 
-# Usando Node.js
+# Node.js
 npx http-server
 ```
 
-Luego visita `http://localhost:8000` en tu navegador.
+3. Visita `http://localhost:8000` y prueba la experiencia completa (añade productos, recarga la página y valida la persistencia).
 
-## �️ Guía de Compra
+## 🔍 Pruebas recomendadas
 
-1. **Explora las categorías** - Navega por nuestras diferentes secciones
-2. **Selecciona productos** - Haz clic en "Agregar" para añadir al carrito
-3. **Guarda favoritos** - Usa el botón ♡ para guardar productos que te gusten
-4. **Revisa tu carrito** - Haz clic en el icono 🛒 para ver tu selección
-5. **Suscríbete al newsletter** - Recibe ofertas especiales en tu correo
+- Cambia el tema y tamaño de fuente, recarga y confirma que se conservan.
+- Filtra por categoría, recarga y verifica que se restaure la selección (sessionStorage).
+- Añade productos, ajusta cantidades y recarga: el carrito y totales deben mantenerse.
+- Desactiva la red (tab DevTools) y recarga: el catálogo debe servirse desde IndexedDB.
+- Envía el formulario de contacto con datos inválidos para revisar mensajes accesibles.
+- Usa sólo teclado (Tab/Enter/Espacio) para navegar, abrir modales y modificar el carrito.
 
-## 📞 Contacto
+## 📌 Accesibilidad & buenas prácticas
 
-- **Email:** info@eshop.com
-- **Teléfono:** +34 123 456 789
-- **Ubicación:** Online - Envíos a todo el país
+- `role="status"`, `aria-live` y estados `aria-invalid` para feedback en tiempo real.
+- Skip link `Saltar al contenido`, menú responsive con `aria-expanded`, modales con `aria-modal`.
+- Controles con `focus-visible` y contraste AA.
+- Formularios compatibles con lectores de pantalla (etiquetas, ayudas y errores relacionados).
 
-## 🤝 Contribuir
+## 📄 Notas
 
-¿Quieres contribuir al proyecto? ¡Genial! 
-1. Haz fork del repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/nueva-caracteristica`)
-3. Commit tus cambios (`git commit -m 'Agregar nueva característica'`)
-4. Push a la rama (`git push origin feature/nueva-caracteristica`)
-5. Abre un Pull Request
-
-## � Licencia
-
-Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE](LICENSE) para más detalles.
-
----
-
-<div align="center">
-  <p><strong>🌟 ¡Dale una estrella si te gusta el proyecto! 🌟</strong></p>
-  <p>Desarrollado con ❤️ por el equipo de E-Shop</p>
-  <p><em>Última actualización: Octubre 2025</em></p>
-</div>
+- Los datos se encuentran en `data/products.json`; las imágenes son placeholders.
+- No se requiere backend: toda la lógica corre en el navegador.
+- El plan de migración a React + TypeScript está documentado en `MIGRATION_PLAN.md`.
