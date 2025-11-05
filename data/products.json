@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": 1,
     "name": "Smartphone XR Pro",
@@ -6,9 +6,9 @@
     "stock": 14,
     "category": "Electrónica",
     "images": [
-      "https://via.placeholder.com/600x400/3b82f6/ffffff?text=Smartphone+Front",
-      "https://via.placeholder.com/600x400/2563eb/ffffff?text=Smartphone+Back",
-      "https://via.placeholder.com/600x400/1d4ed8/ffffff?text=Smartphone+Detail"
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=400&fit=crop"
     ],
     "description": "Último modelo con cámara de 48MP, batería de larga duración y pantalla OLED de 6.4 pulgadas."
   },
@@ -19,9 +19,9 @@
     "stock": 5,
     "category": "Electrónica",
     "images": [
-      "https://via.placeholder.com/600x400/6366f1/ffffff?text=Laptop+Open",
-      "https://via.placeholder.com/600x400/4f46e5/ffffff?text=Laptop+Keyboard",
-      "https://via.placeholder.com/600x400/4338ca/ffffff?text=Laptop+Back"
+      "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=600&h=400&fit=crop"
     ],
     "description": "Procesador Intel i7, 16GB RAM, tarjeta gráfica RTX 3060 y pantalla de 15.6'' a 144Hz."
   },
@@ -32,9 +32,9 @@
     "stock": 20,
     "category": "Electrónica",
     "images": [
-      "https://via.placeholder.com/600x400/8b5cf6/ffffff?text=Auriculares",
-      "https://via.placeholder.com/600x400/7c3aed/ffffff?text=Estuche",
-      "https://via.placeholder.com/600x400/6d28d9/ffffff?text=Detalle"
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1545127398-14699f92334b?w=600&h=400&fit=crop"
     ],
     "description": "Cancelación de ruido activa, modo transparencia y autonomía de hasta 24 horas con estuche."
   },
@@ -45,9 +45,9 @@
     "stock": 30,
     "category": "Ropa",
     "images": [
-      "https://via.placeholder.com/600x400/10b981/ffffff?text=Camiseta+Frente",
-      "https://via.placeholder.com/600x400/0f9a78/ffffff?text=Camiseta+Espalda",
-      "https://via.placeholder.com/600x400/0f766e/ffffff?text=Detalle+Tela"
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=400&fit=crop"
     ],
     "description": "100% algodón orgánico, costuras reforzadas y disponible en tallas S a XXL."
   },
@@ -58,9 +58,9 @@
     "stock": 18,
     "category": "Ropa",
     "images": [
-      "https://via.placeholder.com/600x400/f59e0b/ffffff?text=Zapatillas",
-      "https://via.placeholder.com/600x400/d97706/ffffff?text=Suela",
-      "https://via.placeholder.com/600x400/b45309/ffffff?text=Detalle"
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&h=400&fit=crop"
     ],
     "description": "Máxima comodidad y soporte para entrenamientos intensos, con tecnología de amortiguación avanzada."
   },
@@ -71,9 +71,9 @@
     "stock": 25,
     "category": "Hogar",
     "images": [
-      "https://via.placeholder.com/600x400/ef4444/ffffff?text=L%C3%A1mpara",
-      "https://via.placeholder.com/600x400/df3e3e/ffffff?text=Control",
-      "https://via.placeholder.com/600x400/c92424/ffffff?text=Ambiente"
+      "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1534105615216-e4128d9d0bf0?w=600&h=400&fit=crop"
     ],
     "description": "Control por voz y aplicación móvil, 16 millones de colores y programación de escenas."
   }

@@ -46,9 +46,14 @@ const cart = new CartManager(Storage);
 	await loadProducts();
 
 	setupCategories();
+	
 	const lastCat = Storage.loadLastCategory();
-	if(catSel) catSel.value = lastCat;
-	render(PRODUCTS, lastCat);
+	if(catSel && lastCat) {
+		catSel.value = lastCat;
+	}
+	
+	const currentCategory = catSel ? catSel.value : "Todas";
+	render(PRODUCTS, currentCategory);
 
 	updateCatalogTimestamp(Storage.loadCatalogSync());
 	updateCartBadge(cart.getCount());
@@ -127,16 +132,27 @@ function setStatus(message=""){
 
 function render(items, category="Todas"){
 	if(!grid) return;
-	const filtered = category === "Todas"
+	
+	console.log("Renderizando:", { totalItems: items.length, category });
+	
+	const normalizedCategory = String(category).trim();
+	const filtered = normalizedCategory === "Todas"
 		? items
-		: items.filter(product => product.category === category);
+		: items.filter(product => {
+			const productCategory = String(product.category || "").trim();
+			return productCategory === normalizedCategory;
+		});
+
+	console.log("Productos filtrados:", filtered.length);
 
 	if(!filtered.length){
 		grid.innerHTML = '<p class="grid-empty">No hay productos en esta categoría.</p>';
+		setStatus(`Filtrando por: ${normalizedCategory} - 0 productos encontrados`);
 		return;
 	}
 
 	grid.innerHTML = filtered.map(productCard).join("");
+	setStatus(`Mostrando ${filtered.length} producto(s) de ${normalizedCategory}`);
 
 	grid.querySelectorAll(".js-detail").forEach(btn => {
 		btn.addEventListener("click", () => openDetail(Number(btn.dataset.id)));
@@ -172,6 +188,7 @@ function formatPrice(value){
 function setupCategories(){
 	if(!catSel) return;
 	const cats = Array.from(new Set(PRODUCTS.map(product => product.category))).sort();
+	console.log("Categorías encontradas:", cats);
 	catSel.innerHTML = `<option value="Todas">Todas</option>` + cats
 		.map(category => `<option value="${escapeHTML(category)}">${escapeHTML(category)}</option>`)
 		.join("");
