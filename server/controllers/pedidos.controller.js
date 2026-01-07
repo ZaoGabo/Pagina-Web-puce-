@@ -137,8 +137,8 @@ async function getMine(req, res, next) {
                 total: p.total,
                 createdAt: p.createdAt,
                 detalles: p.detalles.map(d => ({
-                    producto: d.producto.nombre,
-                    imagen: d.producto.imagen,
+                    producto: d.producto ? d.producto.nombre : '[Producto eliminado]',
+                    imagen: d.producto ? d.producto.imagen : null,
                     cantidad: d.cantidad,
                     precioUnitario: d.precioUnitario
                 }))
@@ -180,7 +180,7 @@ async function getAll(req, res, next) {
                 total: p.total,
                 createdAt: p.createdAt,
                 detalles: p.detalles.map(d => ({
-                    producto: d.producto.nombre,
+                    producto: d.producto ? d.producto.nombre : '[Producto eliminado]',
                     cantidad: d.cantidad,
                     precioUnitario: d.precioUnitario
                 }))

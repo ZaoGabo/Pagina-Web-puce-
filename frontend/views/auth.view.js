@@ -48,9 +48,13 @@ const AuthView = {
         const logoutBtn = document.getElementById('logout-btn');
         const userInfo = document.getElementById('user-info');
         const adminLink = document.getElementById('admin-link');
+        const myOrdersBtn = document.getElementById('my-orders-btn');
 
         if (loginBtn) loginBtn.hidden = isAuthenticated;
         if (logoutBtn) logoutBtn.hidden = !isAuthenticated;
+
+        // Mostrar boton de pedidos solo si esta autenticado
+        if (myOrdersBtn) myOrdersBtn.hidden = !isAuthenticated;
 
         if (userInfo && user) {
             userInfo.textContent = user.email;

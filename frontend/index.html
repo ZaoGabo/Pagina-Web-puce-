@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>ZaoShop | Tienda Online</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
     <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
 
@@ -16,7 +18,8 @@
                 <div class="navbar-brand">
                     <a href="index.html" class="logo">ZaoShop</a>
                 </div>
-                <button type="button" class="navbar-toggle" id="menuToggle" aria-expanded="false" aria-controls="primary-menu">
+                <button type="button" class="navbar-toggle" id="menuToggle" aria-expanded="false"
+                    aria-controls="primary-menu">
                     <span class="sr-only">Abrir menu</span>
                     <span aria-hidden="true">&#9776;</span>
                 </button>
@@ -28,11 +31,13 @@
                     <li id="admin-link" hidden><a href="admin.html" class="nav-link nav-link--admin">Admin</a></li>
                 </ul>
                 <div class="navbar-actions">
-                    <button class="btn-icon" id="cart-btn" aria-label="Abrir carrito" aria-expanded="false" aria-controls="cartDialog">
+                    <button class="btn-icon" id="cart-btn" aria-label="Abrir carrito" aria-expanded="false"
+                        aria-controls="cartDialog">
                         <span class="icon" aria-hidden="true">&#128722;</span>
                         <span class="badge">0</span>
                     </button>
                     <a href="login.html" class="btn btn-outline btn-sm" id="login-btn">Iniciar sesion</a>
+                    <button class="btn btn-outline btn-sm" id="my-orders-btn" hidden>Mis Pedidos</button>
                     <button class="btn btn-outline btn-sm" id="logout-btn" hidden>Cerrar sesion</button>
                     <span class="user-email" id="user-info" hidden></span>
                 </div>
@@ -45,7 +50,8 @@
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title" id="hero-title">Bienvenido a ZaoShop</h1>
-                    <p class="hero-subtitle">Carrito de compras accesible, persistente y adaptable para todos los dispositivos.</p>
+                    <p class="hero-subtitle">Carrito de compras accesible, persistente y adaptable para todos los
+                        dispositivos.</p>
                     <a class="btn btn-primary" href="#products">Explorar productos</a>
                 </div>
             </div>
@@ -85,7 +91,8 @@
                             <option value="Todas">Todas</option>
                         </select>
                     </label>
-                    <button type="button" class="btn btn-secondary" id="btnCart" aria-haspopup="dialog" aria-controls="cartDialog" aria-expanded="false">
+                    <button type="button" class="btn btn-secondary" id="btnCart" aria-haspopup="dialog"
+                        aria-controls="cartDialog" aria-expanded="false">
                         &#128722; <span id="cartCount">0</span>
                     </button>
                 </div>
@@ -99,26 +106,31 @@
                 <div class="contact-layout">
                     <div class="contact-intro">
                         <h2 class="section-title" id="contact-title">Contactanos</h2>
-                        <p class="contact-text">Tienes dudas? Completa el formulario y te responderemos en menos de 24 horas.</p>
+                        <p class="contact-text">Tienes dudas? Completa el formulario y te responderemos en menos de 24
+                            horas.</p>
                         <ul class="contact-details">
-                            <li><strong>Email:</strong> <a href="mailto:ZaoShop@outlook.com">ZaoShop@outlook.com</a></li>
+                            <li><strong>Email:</strong> <a href="mailto:ZaoShop@outlook.com">ZaoShop@outlook.com</a>
+                            </li>
                             <li><strong>Telefono:</strong> <a href="tel:+593999999999">+593 999 999 999</a></li>
                         </ul>
                     </div>
                     <form class="contact-form" id="contact-form" novalidate aria-describedby="contactStatus">
                         <div class="form-field">
                             <label for="contactName">Nombre completo</label>
-                            <input type="text" id="contactName" name="name" autocomplete="name" required aria-invalid="false">
+                            <input type="text" id="contactName" name="name" autocomplete="name" required
+                                aria-invalid="false">
                             <p class="form-error" id="contactNameError" role="alert" hidden></p>
                         </div>
                         <div class="form-field">
                             <label for="contactEmail">Correo electronico</label>
-                            <input type="email" id="contactEmail" name="email" autocomplete="email" required aria-invalid="false">
+                            <input type="email" id="contactEmail" name="email" autocomplete="email" required
+                                aria-invalid="false">
                             <p class="form-error" id="contactEmailError" role="alert" hidden></p>
                         </div>
                         <div class="form-field">
                             <label for="contactMessage">Mensaje</label>
-                            <textarea id="contactMessage" name="message" rows="4" required aria-invalid="false"></textarea>
+                            <textarea id="contactMessage" name="message" rows="4" required
+                                aria-invalid="false"></textarea>
                             <p class="form-error" id="contactMessageError" role="alert" hidden></p>
                         </div>
                         <div class="form-actions">
@@ -203,23 +215,41 @@
         </article>
     </dialog>
 
+    <!-- Modal de Mis Pedidos -->
+    <dialog id="ordersDialog" aria-labelledby="ordersTitle" aria-modal="true" role="dialog">
+        <article class="modal-large">
+            <header>
+                <h2 id="ordersTitle">Mis Pedidos</h2>
+                <button class="modal-close" aria-label="Cerrar ventana">&#10005;</button>
+            </header>
+            <div class="orders-body">
+                <ul id="ordersList" class="order-list" role="list"></ul>
+            </div>
+        </article>
+    </dialog>
+
     <!-- Scripts MVC -->
     <script src="models/api.js"></script>
     <script src="models/auth.model.js"></script>
     <script src="models/product.model.js"></script>
     <script src="models/cart.model.js"></script>
+    <script src="models/order.model.js"></script>
     <script src="views/product.view.js"></script>
     <script src="views/cart.view.js"></script>
     <script src="views/auth.view.js"></script>
+    <script src="views/order.view.js"></script>
     <script src="controllers/product.controller.js"></script>
     <script src="controllers/cart.controller.js"></script>
     <script src="controllers/auth.controller.js"></script>
+    <script src="controllers/order.controller.js"></script>
     <script>
         // Inicializar la aplicacion
         document.addEventListener('DOMContentLoaded', () => {
             AuthController.initGlobal();
             ProductController.init();
+            ProductController.init();
             CartController.init();
+            if (typeof OrderController !== 'undefined') OrderController.init();
 
             // Menu responsive
             const menuToggle = document.getElementById('menuToggle');
@@ -233,4 +263,5 @@
         });
     </script>
 </body>
+
 </html>
