@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administracion ZaoShop">
+    <title>Administracion | ZaoShop</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="admin-page">
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <header class="header header--admin" role="banner">
+        <div class="container">
+            <nav class="navbar" aria-label="Navegacion de administracion">
+                <div class="navbar-brand">
+                    <a href="index.html" class="logo">ZaoShop</a>
+                    <span class="admin-badge">Admin</span>
+                </div>
+                <div class="navbar-actions">
+                    <a href="index.html" class="btn btn-outline btn-sm">Volver a la tienda</a>
+                    <button class="btn btn-outline btn-sm" id="logout-btn">Cerrar sesion</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="admin-main" tabindex="-1">
+        <div class="container">
+            <h1>Panel de Administracion</h1>
+
+            <div id="admin-message"></div>
+
+            <!-- Tabs de navegacion -->
+            <div class="admin-tabs" role="tablist" aria-label="Secciones de administracion">
+                <button class="tab-btn active" data-tab="tab-products" role="tab" aria-selected="true"
+                    aria-controls="tab-products">
+                    Productos
+                </button>
+                <button class="tab-btn" data-tab="tab-orders" role="tab" aria-selected="false"
+                    aria-controls="tab-orders">
+                    Pedidos
+                </button>
+            </div>
+
+            <!-- Panel de Productos -->
+            <section id="tab-products" class="tab-panel" role="tabpanel" aria-labelledby="tab-products-label">
+                <h2 id="tab-products-label">Gestion de Productos</h2>
+
+                <!-- Formulario de producto -->
+                <form id="product-form" class="admin-form">
+                    <input type="hidden" name="id">
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="nombre">Nombre *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="categoria">Categoria</label>
+                            <input type="text" id="categoria" name="categoria" placeholder="Ej: Electronica">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="precio">Precio (USD) *</label>
+                            <input type="number" id="precio" name="precio" step="0.01" min="0.01" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="stock">Stock *</label>
+                            <input type="number" id="stock" name="stock" min="0" value="0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="descripcion">Descripcion</label>
+                        <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="imagen">URL de imagen</label>
+                        <input type="url" id="imagen" name="imagen" placeholder="https://...">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Crear producto</button>
+                        <button type="button" class="btn btn-outline js-cancel">Cancelar</button>
+                    </div>
+                </form>
+
+                <hr>
+
+                <h3>Lista de Productos</h3>
+                <div id="product-table"></div>
+            </section>
+
+            <!-- Panel de Pedidos -->
+            <section id="tab-orders" class="tab-panel" role="tabpanel" aria-labelledby="tab-orders-label" hidden>
+                <h2 id="tab-orders-label">Todos los Pedidos</h2>
+                <div id="order-table"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer footer--admin" role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 ZaoShop - Panel de Administracion</p>
+        </div>
+    </footer>
+
+    <!-- Scripts MVC -->
+    <script src="models/api.js"></script>
+    <script src="models/auth.model.js"></script>
+    <script src="models/product.model.js"></script>
+    <script src="models/order.model.js"></script>
+    <script src="views/auth.view.js"></script>
+    <script src="views/admin.view.js"></script>
+    <script src="controllers/auth.controller.js"></script>
+    <script src="controllers/admin.controller.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AuthController.initGlobal();
+            AdminController.init();
+        });
+    </script>
+</body>
+
+</html>

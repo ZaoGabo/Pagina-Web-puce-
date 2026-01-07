@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crear cuenta en ZaoShop">
+    <title>Crear Cuenta | ZaoShop</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="auth-page">
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <main id="main-content" class="auth-container" tabindex="-1">
+        <div class="auth-card">
+            <header class="auth-header">
+                <a href="index.html" class="logo">ZaoShop</a>
+                <h1>Crear Cuenta</h1>
+            </header>
+
+            <form id="register-form" class="auth-form" novalidate>
+                <div class="form-field">
+                    <label for="email">Correo electronico</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required aria-invalid="false"
+                        aria-describedby="register-error">
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Clave</label>
+                    <input type="password" id="password" name="password" autocomplete="new-password" required
+                        aria-invalid="false" aria-describedby="password-help register-error">
+                    <p id="password-help" class="form-help">Minimo 6 caracteres, una mayuscula y un numero</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="confirmPassword">Confirmar clave</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password"
+                        required aria-invalid="false" aria-describedby="register-error">
+                </div>
+
+                <p id="register-error" class="form-error auth-error" role="alert" hidden></p>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
+                </div>
+            </form>
+
+            <footer class="auth-footer">
+                <p>Ya tienes cuenta? <a href="login.html">Iniciar sesion</a></p>
+                <p><a href="index.html">Volver a la tienda</a></p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Scripts MVC -->
+    <script src="models/api.js"></script>
+    <script src="models/auth.model.js"></script>
+    <script src="views/auth.view.js"></script>
+    <script src="controllers/auth.controller.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AuthController.initRegister();
+        });
+    </script>
+</body>
+
+</html>
