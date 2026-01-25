@@ -1,77 +1,57 @@
-# ZaoShop - Plataforma E-Commerce Full Stack MVC
+# ZaoShop - Plataforma E-Commerce Full Stack
 
 ## Descripcion del Sistema
 
-ZaoShop es una plataforma web tipo e-commerce desarrollada con arquitectura MVC completa tanto en frontend como backend. El sistema permite:
+ZaoShop es una plataforma web tipo e-commerce desarrollada con arquitectura **MVC completa** tanto en frontend como backend.
 
-- **Catalogo de productos** cargado dinamicamente desde API
-- **Carrito de compras** con persistencia en localStorage
-- **Autenticacion JWT** con roles (admin/user)
-- **Panel de administracion** para gestion de productos y pedidos
-- **Checkout** que registra pedidos en base de datos
+### Tecnologias
+
+| Capa | Tecnologia |
+|------|------------|
+| **Frontend** | React 18 + TypeScript + Vite |
+| **Backend** | Node.js + Express |
+| **Base de datos** | PostgreSQL (Supabase) |
+| **ORM** | Prisma |
+| **Autenticacion** | JWT + bcrypt |
+| **Validacion** | Zod (frontend) + express-validator (backend) |
 
 ---
 
 ## Arquitectura MVC
 
-### Frontend MVC (`/frontend`)
+### Frontend (`/frontend-react`)
 
 ```
-frontend/
-|-- index.html              # Pagina principal (semantico y accesible)
-|-- login.html              # Inicio de sesion
-|-- register.html           # Registro de usuarios
-|-- admin.html              # Panel de administracion
+src/
+|-- components/          # Vista - Componentes UI
+|   |-- layout/          # Header, Footer, Layout
+|   |-- products/        # ProductCard
+|   +-- auth/            # ProtectedRoute
 |
-|-- models/                 # Capa de datos (consumo API, estado)
-|   |-- api.js              # Cliente HTTP con JWT automatico
-|   |-- auth.model.js       # Logica de autenticacion
-|   |-- cart.model.js       # Estado del carrito
-|   |-- product.model.js    # Operaciones de productos
-|   +-- order.model.js      # Consulta de pedidos
+|-- pages/               # Controlador - Paginas/Rutas
+|   |-- Home.tsx, Products.tsx, Cart.tsx...
+|   +-- admin/           # Dashboard, ProductsAdmin, OrdersAdmin
 |
-|-- views/                  # Capa de renderizado UI
-|   |-- product.view.js     # Tarjetas de productos
-|   |-- cart.view.js        # Vista del carrito
-|   |-- auth.view.js        # Formularios de auth
-|   +-- admin.view.js       # Tablas del panel admin
+|-- services/            # Modelo - Consumo de API
+|   |-- api.ts, auth.service.ts
+|   +-- products.service.ts, orders.service.ts
 |
-|-- controllers/            # Capa de control de eventos
-|   |-- product.controller.js
-|   |-- cart.controller.js
-|   |-- auth.controller.js
-|   +-- admin.controller.js
+|-- context/             # Estado global
+|   |-- AuthContext.tsx
+|   +-- CartContext.tsx
 |
-+-- assets/css/             # Estilos CSS
-    +-- styles.css
++-- types/               # Tipos TypeScript
+    +-- index.ts
 ```
 
-### Backend MVC (`/server`)
+### Backend (`/server`)
 
 ```
 server/
-|-- server.js               # Punto de entrada Express
-|-- package.json            # Dependencias
-|-- .env.example            # Variables de entorno
-|
-|-- routes/                 # Definicion de rutas API
-|   |-- auth.routes.js
-|   |-- productos.routes.js
-|   +-- pedidos.routes.js
-|
-|-- controllers/            # Logica de negocio HTTP
-|   |-- auth.controller.js
-|   |-- productos.controller.js
-|   +-- pedidos.controller.js
-|
-|-- middleware/             # Middlewares de seguridad
-|   |-- auth.middleware.js      # JWT y roles
-|   |-- validate.middleware.js  # Validacion de entradas
-|   +-- error.middleware.js     # Manejo centralizado de errores
-|
-+-- prisma/                 # ORM y base de datos
-    |-- schema.prisma       # Modelo de datos
-    +-- seed.js             # Datos iniciales
+|-- routes/              # Definicion de rutas
+|-- controllers/         # Logica de negocio
+|-- middleware/          # Auth, validacion, errores
++-- prisma/              # ORM y esquema BD
 ```
 
 ---
@@ -79,30 +59,27 @@ server/
 ## Endpoints de la API
 
 ### Autenticacion
-
-| Metodo | Ruta               | Acceso  | Descripcion          |
-|--------|--------------------|---------|----------------------|
-| POST   | /api/auth/register | Publico | Registrar usuario    |
-| POST   | /api/auth/login    | Publico | Login, devuelve JWT  |
-| GET    | /api/auth/me       | JWT     | Info usuario actual  |
+| Metodo | Ruta | Acceso | Descripcion |
+|--------|------|--------|-------------|
+| POST | /api/auth/register | Publico | Registrar usuario |
+| POST | /api/auth/login | Publico | Login, devuelve JWT |
+| GET | /api/auth/me | JWT | Info usuario actual |
 
 ### Productos
-
-| Metodo | Ruta                 | Acceso  | Descripcion         |
-|--------|----------------------|---------|---------------------|
-| GET    | /api/productos       | Publico | Listar productos    |
-| GET    | /api/productos/:id   | Publico | Detalle producto    |
-| POST   | /api/productos       | Admin   | Crear producto      |
-| PUT    | /api/productos/:id   | Admin   | Actualizar producto |
-| DELETE | /api/productos/:id   | Admin   | Eliminar producto   |
+| Metodo | Ruta | Acceso | Descripcion |
+|--------|------|--------|-------------|
+| GET | /api/productos | Publico | Listar productos |
+| GET | /api/productos/:id | Publico | Detalle producto |
+| POST | /api/productos | Admin | Crear producto |
+| PUT | /api/productos/:id | Admin | Actualizar producto |
+| DELETE | /api/productos/:id | Admin | Eliminar producto |
 
 ### Pedidos
-
-| Metodo | Ruta                     | Acceso | Descripcion              |
-|--------|--------------------------|--------|--------------------------|
-| POST   | /api/pedidos             | JWT    | Crear pedido             |
-| GET    | /api/pedidos/mis-pedidos | JWT    | Pedidos del usuario      |
-| GET    | /api/pedidos             | Admin  | Todos los pedidos        |
+| Metodo | Ruta | Acceso | Descripcion |
+|--------|------|--------|-------------|
+| POST | /api/pedidos | JWT | Crear pedido |
+| GET | /api/pedidos/mis-pedidos | JWT | Pedidos del usuario |
+| GET | /api/pedidos | Admin | Todos los pedidos |
 
 ---
 
@@ -112,11 +89,24 @@ server/
 
 ```powershell
 cd server
+
+# Instalar dependencias
 npm install
-$env:DATABASE_URL = "file:./dev.db"
+
+# Configurar variables de entorno
+copy .env.example .env
+# Editar .env con tus credenciales de Supabase
+
+# Generar cliente Prisma
 npx prisma generate
+
+# Sincronizar base de datos
 npx prisma db push
+
+# Poblar datos iniciales
 node prisma/seed.js
+
+# Iniciar servidor
 npm run dev
 ```
 
@@ -125,64 +115,63 @@ El servidor estara en: `http://localhost:3000`
 ### 2. Frontend
 
 ```powershell
-cd frontend
-npx http-server -p 8080 --cors
+cd frontend-react
+
+# Instalar dependencias
+npm install
+
+# Configurar variables de entorno (opcional)
+copy .env.example .env
+
+# Iniciar servidor de desarrollo
+npm run dev
 ```
 
-El frontend estara en: `http://localhost:8080`
+El frontend estara en: `http://localhost:5173`
 
 ### Credenciales de Prueba
 
-| Rol   | Email              | Password  |
-|-------|--------------------|-----------|
-| Admin | admin@zaoshop.com  | Admin123! |
-| User  | user@zaoshop.com   | User123!  |
+| Rol | Email | Password |
+|-----|-------|----------|
+| Admin | admin@zaoshop.com | Admin123! |
+| User | user@zaoshop.com | User123! |
 
 ---
 
-## Medidas de Seguridad OWASP Aplicadas
+## Seguridad OWASP Aplicada
 
 ### 1. A01:2021 - Broken Access Control
 **Riesgo:** Usuarios no autorizados acceden a funciones de administrador.
 
-**Mitigacion implementada:**
+**Mitigacion:**
 - Middleware `verifyToken` valida JWT en cada peticion protegida
 - Middleware `requireRole('admin')` bloquea acceso a usuarios sin rol admin
-- Frontend oculta menu Admin para usuarios normales y redirige si intentan acceder directamente
+- Componente `ProtectedRoute` en frontend verifica autenticacion y roles
+- Frontend oculta menu Admin para usuarios normales
 
-**Archivo:** `/server/middleware/auth.middleware.js`
+**Archivos:** `auth.middleware.js`, `ProtectedRoute.tsx`
 
 ### 2. A02:2021 - Cryptographic Failures
 **Riesgo:** Contrasenas almacenadas en texto plano.
 
-**Mitigacion implementada:**
+**Mitigacion:**
 - Hash de contrasenas con **bcrypt** (10 salt rounds)
 - JWT firmado con secreto configurable (`JWT_SECRET`)
 - Campo `passwordHash` nunca se retorna en respuestas de API
+- Token almacenado en localStorage con expiracion
 
-**Archivo:** `/server/controllers/auth.controller.js`
+**Archivo:** `auth.controller.js`
 
 ### 3. A03:2021 - Injection
 **Riesgo:** SQL Injection y Cross-Site Scripting (XSS).
 
-**Mitigacion implementada:**
+**Mitigacion:**
 - **Prisma ORM** parametriza todas las consultas SQL automaticamente
-- **express-validator** sanitiza entradas con `escape()` y `trim()`
-- Frontend usa `textContent` en lugar de `innerHTML` para datos dinamicos
-- Funcion `escapeHTML()` en las vistas para prevenir XSS
+- **Zod** valida y sanitiza entradas en frontend
+- **express-validator** sanitiza entradas con `escape()` y `trim()` en backend
+- React escapa automaticamente el contenido renderizado
 
-**Archivos:**
-- `/server/middleware/validate.middleware.js`
-- `/frontend/views/product.view.js`
-
-### Otras Medidas de Seguridad
-
-| Medida | Implementacion |
-|--------|----------------|
-| **CORS Seguro** | Solo permite `CORS_ORIGIN` configurado |
-| **JWT con Expiracion** | Tokens expiran segun `JWT_EXPIRES_IN` |
-| **Error Handler** | No expone stack traces en produccion |
-| **Validacion de Entrada** | Todos los endpoints validan body/params |
+**Archivos:** `validate.middleware.js`, `Login.tsx`, `Register.tsx`
 
 ---
 
@@ -191,65 +180,42 @@ El frontend estara en: `http://localhost:8080`
 | # | Prueba | Resultado |
 |---|--------|-----------|
 | 1 | Login admin obtiene token JWT | OK |
-| 2 | Admin crea producto | OK |
-| 3 | User NO puede crear producto (redirigido) | OK |
-| 4 | Catalogo muestra productos desde API | OK |
-| 5 | Carrito funciona y persiste | OK |
-| 6 | Checkout crea pedido en BD | OK |
-| 7 | Admin ve todos los pedidos | OK |
+| 2 | Login usuario normal obtiene token JWT | OK |
+| 3 | Admin puede crear/editar/eliminar productos | OK |
+| 4 | Usuario NO puede acceder a panel admin | OK |
+| 5 | Catalogo muestra productos desde API | OK |
+| 6 | Carrito persiste en localStorage | OK |
+| 7 | Checkout crea pedido en BD | OK |
+| 8 | Usuario ve historial de sus pedidos | OK |
+| 9 | Admin ve todos los pedidos | OK |
+| 10 | Validacion de formularios funciona | OK |
 
 ---
 
-## Modelo de Base de Datos
-
-```
-+-------------+       +---------------+
-|   Usuario   |       |   Producto    |
-+-------------+       +---------------+
-| id          |       | id            |
-| email       |       | nombre        |
-| passwordHash|       | descripcion   |
-| role        |       | precio        |
-| createdAt   |       | stock         |
-+------+------+       | imagen        |
-       |              | categoria     |
-       |              | createdAt     |
-       |              +-------+-------+
-       |                      |
-+------v------+       +-------v-------+
-|   Pedido    |       | PedidoDetalle |
-+-------------+       +---------------+
-| id          |<------| id            |
-| usuarioId   |       | pedidoId      |
-| total       |       | productoId    |
-| createdAt   |       | cantidad      |
-+-------------+       | precioUnitario|
-                      +---------------+
-```
-
----
-
-## Tecnologias Utilizadas
+## Despliegue en Vercel
 
 ### Backend
-- Node.js + Express
-- Prisma ORM + SQLite
-- bcrypt (hash de contrasenas)
-- jsonwebtoken (JWT)
-- express-validator (validacion)
-- cors (politica CORS)
+1. Crear nuevo proyecto en Vercel
+2. Importar carpeta `/server`
+3. Configurar variables de entorno:
+   - `DATABASE_URL` - URL de Supabase
+   - `DIRECT_URL` - URL directa de Supabase
+   - `JWT_SECRET` - Secreto para JWT
+   - `CORS_ORIGIN` - URL del frontend desplegado
+   - `NODE_ENV` - production
 
 ### Frontend
-- HTML5 semantico
-- CSS3 (variables, flexbox, grid, responsive)
-- JavaScript ES6+ (MVC pattern)
-- Fetch API + async/await
+1. Crear nuevo proyecto en Vercel
+2. Importar carpeta `/frontend-react`
+3. Configurar variable de entorno:
+   - `VITE_API_URL` - URL del backend desplegado
 
 ---
 
 ## Autor
 
-**ZaoShop** - Reto 2 Full Stack MVC
+**ZaoShop** - RDA 3 Full Stack con React  
+PUCE - Desarrollo Web
 
 ## Licencia
 
