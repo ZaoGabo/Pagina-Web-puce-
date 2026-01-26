@@ -13,6 +13,7 @@ import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Products } from './pages/Products';
+import { ProductDetail } from './pages/ProductDetail';
 import { Cart } from './pages/Cart';
 import { Checkout } from './pages/Checkout';
 import { MyOrders } from './pages/MyOrders';
@@ -63,6 +64,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
               <Route path="/productos" element={<Products />} />
+              <Route path="/productos/:id" element={<ProductDetail />} />
               <Route path="/carrito" element={<Cart />} />
 
               {/* Rutas protegidas - requieren autenticacion */}
