@@ -145,9 +145,27 @@ const AdminController = {
         const data = AdminView.getProductFormData(this.elements.productForm);
         if (!data) return;
 
-        // Validacion basica
+        // Validaciones mejoradas
         if (!data.nombre || !data.precio) {
             AdminView.showMessage('Nombre y precio son obligatorios', 'error', this.elements.messageContainer);
+            return;
+        }
+
+        // Validar precio sea un número válido y positivo
+        if (isNaN(data.precio) || data.precio <= 0) {
+            AdminView.showMessage('El precio debe ser mayor a $0.00', 'error', this.elements.messageContainer);
+            return;
+        }
+
+        // Validar stock sea un número válido y no negativo
+        if (isNaN(data.stock) || data.stock < 0) {
+            AdminView.showMessage('El stock no puede ser negativo', 'error', this.elements.messageContainer);
+            return;
+        }
+
+        // Validar que el stock sea un número entero
+        if (!Number.isInteger(data.stock)) {
+            AdminView.showMessage('El stock debe ser un número entero (sin decimales)', 'error', this.elements.messageContainer);
             return;
         }
 
