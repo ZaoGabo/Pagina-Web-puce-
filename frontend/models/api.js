@@ -3,7 +3,16 @@
  * Maneja tokens JWT automaticamente
  */
 const API = {
-    baseURL: 'http://localhost:3000/api',
+    // Detectar automaticamente el entorno y usar la URL correcta
+    baseURL: (() => {
+        // En produccion (Vercel o cualquier dominio que no sea localhost)
+        if (window.location.hostname !== 'localhost' &&
+            window.location.hostname !== '127.0.0.1') {
+            return 'https://zaoshop-api.vercel.app/api';
+        }
+        // En desarrollo local
+        return 'http://localhost:3000/api';
+    })(),
 
     /**
      * Obtiene el token almacenado
